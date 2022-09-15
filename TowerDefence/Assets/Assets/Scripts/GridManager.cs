@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
     public int gridWidth = 16;
     public int gridHeight = 8;
+    public int minPathLength = 30;
 
     public GameObject pathTile;
 
@@ -15,6 +17,15 @@ public class GridManager : MonoBehaviour
     {
         pathGenerator = new PathGenerator(gridWidth, gridHeight);
         List<Vector2Int> pathBlocks = pathGenerator.GeneratePath();
+
+        int pathSize = pathBlocks.Count;
+
+        while (pathSize < minPathLength)
+        {
+            pathBlocks = pathGenerator.GeneratePath();
+            pathSize = pathBlocks.Count;
+        }
+        
         
         StartCoroutine(LayPathBlocks(pathBlocks));
     }

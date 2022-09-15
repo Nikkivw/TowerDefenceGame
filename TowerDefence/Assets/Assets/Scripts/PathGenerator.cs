@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class PathGenerator
@@ -39,17 +40,17 @@ public class PathGenerator
             {
                 int move = Random.Range(0, 3);
 
-                if (move == 0 || x % 2 == 0)
+                if (move == 0 || x % 2 == 0 || x >(width - 2))
                 {
                     x++;
                     validmove = true;
                 }
-                else if (move == 1)
+                else if (move == 1 && pathBlockIsEmpty(x, y + 1) && y < (height - 2))
                 {
                     y++;
                     validmove=true;
                 }
-                else if (move == 2)
+                else if (move == 2 && pathBlockIsEmpty(x, y - 1) && y > 2)
                 {
                     y--;
                     validmove=true;
@@ -58,5 +59,41 @@ public class PathGenerator
         }
         
         return pathBlocks;
+    }
+    private bool pathBlockIsEmpty (int x, int y)
+    {
+        return !pathBlocks.Contains(new Vector2Int(x, y));
+    }
+
+    private bool pathBlockIsTaken(int x, int y)
+    {
+        return pathBlocks.Contains(new Vector2Int(x, y));
+    }
+
+    private int getPathblockRotation(int x, int y)
+    {
+        int returnValue = 0;
+
+        if (pathBlockIsTaken(x, y - 1))
+        {
+            returnValue += 1;
+        }
+
+        if (pathBlockIsTaken(x - 1, y))
+        {
+            returnValue += 2;
+        }
+        
+        if (pathBlockIsTaken(x + 1, y ))
+        {
+            returnValue += 4;
+        }
+
+        if (pathBlockIsTaken(x, y + 1))
+        {
+            returnValue += 8;
+        }
+
+        return returnValue;
     }
 }
