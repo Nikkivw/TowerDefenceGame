@@ -9,6 +9,8 @@ public class GridManager : MonoBehaviour
     public int gridHeight = 8;
     public int minPathLength = 30;
 
+    public GridBlockObject[] pathBlockObject;
+
     public GameObject pathTile;
 
     private PathGenerator pathGenerator;
@@ -25,8 +27,6 @@ public class GridManager : MonoBehaviour
             pathBlocks = pathGenerator.GeneratePath();
             pathSize = pathBlocks.Count;
         }
-        
-        
         StartCoroutine(LayPathBlocks(pathBlocks));
     }
 
@@ -34,8 +34,13 @@ public class GridManager : MonoBehaviour
     {
         foreach (Vector2Int pathBlock in pathBlocks)
         {
-            Instantiate(pathTile, new Vector3(pathBlock.x, 0f, pathBlock.y), Quaternion.identity);
-            yield return new WaitForSeconds(0.5f);
+            int neighbourValue = pathGenerator.getPathblockRotation(pathBlock.x, pathBlock.y);
+            Debug.Log("Tile" + pathBlock.x + ", " + pathBlock.y + "neighbour value =" + neighbourValue);
+            GameObject pathTile = pathBlockObject[neighbourValue].blockPrefab;
+            GameObject pathTileBlock = Instantiate(pathTile, new Vector3(pathBlock.x, 0f, pathBlock.y), Quaternion.identity);
+            pathTileBlock.transform.Rotate(0f, pathBlockObject[neighbourValue].yRotation, 0f, Space.Self);
+
+            yield return new WaitForSeconds(0.4f);
         }
          yield return null;
     }

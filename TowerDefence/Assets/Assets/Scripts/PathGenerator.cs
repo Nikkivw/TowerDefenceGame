@@ -45,12 +45,12 @@ public class PathGenerator
                     x++;
                     validmove = true;
                 }
-                else if (move == 1 && pathBlockIsEmpty(x, y + 1) && y < (height - 2))
+                else if (move == 1 && BlockIsEmpty(x, y + 1) && y < (height - 2))
                 {
                     y++;
                     validmove=true;
                 }
-                else if (move == 2 && pathBlockIsEmpty(x, y - 1) && y > 2)
+                else if (move == 2 && BlockIsEmpty(x, y - 1) && y > 2)
                 {
                     y--;
                     validmove=true;
@@ -60,36 +60,36 @@ public class PathGenerator
         
         return pathBlocks;
     }
-    private bool pathBlockIsEmpty (int x, int y)
+    private bool BlockIsEmpty (int x, int y)
     {
         return !pathBlocks.Contains(new Vector2Int(x, y));
     }
 
-    private bool pathBlockIsTaken(int x, int y)
+    private bool BlockIsTaken(int x, int y)
     {
         return pathBlocks.Contains(new Vector2Int(x, y));
     }
 
-    private int getPathblockRotation(int x, int y)
+    public int getPathblockRotation(int x, int y)
     {
         int returnValue = 0;
 
-        if (pathBlockIsTaken(x, y - 1))
+        if (BlockIsTaken(x, y - 1))
         {
-            returnValue += 1;
+            returnValue += 1;//Check tile down
         }
 
-        if (pathBlockIsTaken(x - 1, y))
+        if (BlockIsTaken(x - 1, y))
         {
-            returnValue += 2;
+            returnValue += 2;//Check tile right
         }
         
-        if (pathBlockIsTaken(x + 1, y ))
+        if (BlockIsTaken(x + 1, y ))//Check tile left
         {
             returnValue += 4;
         }
 
-        if (pathBlockIsTaken(x, y + 1))
+        if (BlockIsTaken(x, y + 1))//Check tile up
         {
             returnValue += 8;
         }
