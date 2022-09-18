@@ -60,19 +60,19 @@ public class PathGenerator
         
         return pathBlocks;
     }
-    private bool BlockIsEmpty (int x, int y)
+    public bool BlockIsEmpty (int x, int y)
     {
         return !pathBlocks.Contains(new Vector2Int(x, y));
     }
 
-    private bool BlockIsTaken(int x, int y)
+    public bool BlockIsTaken(int x, int y)
     {
         return pathBlocks.Contains(new Vector2Int(x, y));
     }
 
     public int getPathblockRotation(int x, int y)
     {
-        int returnValue = 0;
+        int returnValue = 0; 
 
         if (BlockIsTaken(x, y - 1))
         {

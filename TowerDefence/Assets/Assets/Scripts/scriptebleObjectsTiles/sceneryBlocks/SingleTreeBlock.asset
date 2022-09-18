@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54a1c16e808d5704eb95378a7e9339b5, type: 3}
-  m_Name: GrassBlock
+  m_Name: SingleTreeBlock
   m_EditorClassIdentifier: 
-  blockType: 0
-  blockPrefab: {fileID: 919132149155446097, guid: 3c778a33f90ba2a43ab326718c2f04d6, type: 3}
+  blockType: 1
+  blockPrefab: {fileID: 378262993336212722, guid: 91d660a0750a57447a9f2962d00fa650, type: 3}
   yRotation: 0
