@@ -24,6 +24,7 @@ public class GridManager : MonoBehaviour
         while (pathSize < minPathLength)
         {
             pathBlocks = pathGenerator.GeneratePath();
+            while (pathGenerator.GenerateCrossRoads());
             pathSize = pathBlocks.Count;
         }
         StartCoroutine(CreateGrid(pathBlocks));

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridWidth: 18
   gridHeight: 10
-  minPathLength: 35
+  minPathLength: 40
   pathBlockObject:
   - {fileID: 11400000, guid: adc9a4106707ad44989924a7b6f49520, type: 2}
   - {fileID: 11400000, guid: adc9a4106707ad44989924a7b6f49520, type: 2}
@@ -171,7 +171,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9dd91665114fb2048a49c9f4d17b18fa, type: 2}
   - {fileID: 11400000, guid: adc9a4106707ad44989924a7b6f49520, type: 2}
   - {fileID: 11400000, guid: adc9a4106707ad44989924a7b6f49520, type: 2}
-  - {fileID: 11400000, guid: adc9a4106707ad44989924a7b6f49520, type: 2}
+  - {fileID: 11400000, guid: 717c5f7dfe69bd2439e3dba4ab81a0f6, type: 2}
   sceneryBlockObjects:
   - {fileID: 11400000, guid: adc9a4106707ad44989924a7b6f49520, type: 2}
   - {fileID: 11400000, guid: 59cd1dca1dbc1e24e866616b41114422, type: 2}

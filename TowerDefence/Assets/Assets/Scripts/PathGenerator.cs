@@ -22,14 +22,6 @@ public class PathGenerator
         
         int x = 0;
         
-        /*
-        for (int x = 0; x < width; x++)
-        {
-            pathBlocks.Add(new Vector2Int(x, y));
-        }
-        */
-        
-       
         while (x < width)
         {
             pathBlocks.Add(new Vector2Int(x, y));
@@ -60,6 +52,39 @@ public class PathGenerator
         
         return pathBlocks;
     }
+
+    public bool GenerateCrossRoads()
+    {
+        for (int i = 0; i < pathBlocks.Count; i++)
+        {
+            Vector2Int pathBlock = pathBlocks[i];
+
+            if (pathBlock.x > 3 && pathBlock.x < width - 4 && pathBlock.y > 3 && pathBlock.y < height - 3)
+            {
+                if (BlockIsEmpty(pathBlock.x, pathBlock.y + 3) && BlockIsEmpty(pathBlock.x + 1, pathBlock.y + 3) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y + 3) &&
+                    BlockIsEmpty(pathBlock.x - 1, pathBlock.y + 2) && BlockIsEmpty(pathBlock.x, pathBlock.y + 2) && BlockIsEmpty(pathBlock.x + 1, pathBlock.y + 2) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y + 2) && BlockIsEmpty(pathBlock.x + 3, pathBlock.y + 2) &&
+                    BlockIsEmpty(pathBlock.x - 1, pathBlock.y + 1) && BlockIsEmpty(pathBlock.x, pathBlock.y + 1) && BlockIsEmpty(pathBlock.x + 1, pathBlock.y + 1) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y + 1) && BlockIsEmpty(pathBlock.x + 3, pathBlock.y + 1) &&
+                    BlockIsEmpty(pathBlock.x + 1, pathBlock.y) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y) && BlockIsEmpty(pathBlock.x + 3, pathBlock.y) &&
+                    BlockIsEmpty(pathBlock.x + 1, pathBlock.y - 1) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y - 1))
+                {
+                    pathBlocks.InsertRange(i + 1, new List<Vector2Int> { new Vector2Int(pathBlock.x + 1, pathBlock.y), new Vector2Int(pathBlock.x + 2, pathBlock.y), new Vector2Int(pathBlock.x + 2, pathBlock.y + 1), new Vector2Int(pathBlock.x + 2, pathBlock.y + 2), new Vector2Int(pathBlock.x + 1, pathBlock.y + 2), new Vector2Int(pathBlock.x, pathBlock.y + 2), new Vector2Int(pathBlock.x, pathBlock.y + 1) });
+                    return true;
+                }
+
+                if (BlockIsEmpty(pathBlock.x + 1, pathBlock.y + 1) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y + 1) &&
+                    BlockIsEmpty(pathBlock.x + 1, pathBlock.y) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y) && BlockIsEmpty(pathBlock.x + 3, pathBlock.y) &&
+                    BlockIsEmpty(pathBlock.x - 1, pathBlock.y - 1) && BlockIsEmpty(pathBlock.x, pathBlock.y - 1) && BlockIsEmpty(pathBlock.x + 1, pathBlock.y - 1) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y - 1) && BlockIsEmpty(pathBlock.x + 3, pathBlock.y - 1) &&
+                    BlockIsEmpty(pathBlock.x - 1, pathBlock.y - 2) && BlockIsEmpty(pathBlock.x, pathBlock.y - 2) && BlockIsEmpty(pathBlock.x + 1, pathBlock.y - 2) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y - 2) && BlockIsEmpty(pathBlock.x + 3, pathBlock.y - 2) &&
+                    BlockIsEmpty(pathBlock.x, pathBlock.y - 3) && BlockIsEmpty(pathBlock.x + 1, pathBlock.y - 3) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y - 3))
+                {
+                    pathBlocks.InsertRange(i + 1, new List<Vector2Int> { new Vector2Int(pathBlock.x + 1, pathBlock.y), new Vector2Int(pathBlock.x + 2, pathBlock.y), new Vector2Int(pathBlock.x + 2, pathBlock.y - 1), new Vector2Int(pathBlock.x + 2, pathBlock.y - 2), new Vector2Int(pathBlock.x + 1, pathBlock.y - 2), new Vector2Int(pathBlock.x, pathBlock.y -2), new Vector2Int(pathBlock.x, pathBlock.y - 1)});
+                    return true;
+                }
+            }
+        } 
+        return false;
+    }
+
     public bool BlockIsEmpty (int x, int y)
     {
         return !pathBlocks.Contains(new Vector2Int(x, y));
