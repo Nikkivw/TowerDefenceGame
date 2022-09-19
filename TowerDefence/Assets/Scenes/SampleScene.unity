@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 535761491}
   - component: {fileID: 535761490}
+  - component: {fileID: 535761492}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridWidth: 18
   gridHeight: 10
-  minPathLength: 40
+  minPathLength: 45
   pathBlockObject:
   - {fileID: 11400000, guid: adc9a4106707ad44989924a7b6f49520, type: 2}
   - {fileID: 11400000, guid: adc9a4106707ad44989924a7b6f49520, type: 2}
@@ -195,6 +196,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &535761492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535761489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507702b7dcae7074e8e245c51bc56e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyObject: {fileID: 34556900946248005, guid: e88415fa1e8086d4b884e75d971ed596, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,7 +59,7 @@ public class PathGenerator
         {
             Vector2Int pathBlock = pathBlocks[i];
 
-            if (pathBlock.x > 3 && pathBlock.x < width - 4 && pathBlock.y > 3 && pathBlock.y < height - 3)
+            if (pathBlock.x > 3 && pathBlock.x < width - 4 && pathBlock.y > 2 && pathBlock.y < height - 3)
             {
                 if (BlockIsEmpty(pathBlock.x, pathBlock.y + 3) && BlockIsEmpty(pathBlock.x + 1, pathBlock.y + 3) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y + 3) &&
                     BlockIsEmpty(pathBlock.x - 1, pathBlock.y + 2) && BlockIsEmpty(pathBlock.x, pathBlock.y + 2) && BlockIsEmpty(pathBlock.x + 1, pathBlock.y + 2) && BlockIsEmpty(pathBlock.x + 2, pathBlock.y + 2) && BlockIsEmpty(pathBlock.x + 3, pathBlock.y + 2) &&
@@ -106,10 +106,10 @@ public class PathGenerator
 
         if (BlockIsTaken(x - 1, y))
         {
-            returnValue += 2;//Check tile right
+            returnValue += 2;//Check tile left
         }
         
-        if (BlockIsTaken(x + 1, y ))//Check tile left
+        if (BlockIsTaken(x + 1, y ))//Check tile right
         {
             returnValue += 4;
         }
