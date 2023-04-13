@@ -1,2 +1,3 @@
 # TowerDefenceGame
- Tower defence game voor een schoolopdracht
+
+fist attempt to make a procedural map generation for a tower defense game
